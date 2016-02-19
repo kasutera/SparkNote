@@ -39,34 +39,34 @@ Spark projects are basically managed by Maven, so it needs to be imported as Mav
 
 Choose `File` > `Import` and select downloaded project. If the project is already opened, `Maven` > `Reimport` the project.
 
-![Reimport](./IntelliJonSpark/Reimport.png)
+![Reimport](./SparkonIntelliJ/Reimport.png)
 
 
 
 ## 4. Set up scope of dependencies from **provided** to **compile**
 Choose `File` > `Project Structure`
 
-![Project Structure](./IntelliJonSpark/ProjectStructure.png)
+![Project Structure](./SparkonIntelliJ/ProjectStructure.png)
 
 And then, choose `Modules` > *Any Module* > `Dependencies` > `Scope (Provided > Compile)`
 
-![Change Scope](./IntelliJonSpark/ChangeScope.png)
+![Change Scope](./SparkonIntelliJ/ChangeScope.png)
 
 ## 5. Generate Source Code using Maven
 Spark uses source code generator in object serializer, so generation of such code is required in IntelliJ.
 
 Choose `Maven` > `Generate Sources and Update Folders`
 
-![Generage Source](./IntelliJonSpark/GenerateSource.png)
+![Generage Source](./SparkonIntelliJ/GenerateSource.png)
 
 ## 6. Compile & Debug
 `Build` > `Rebuild Project` (it takes long time to build all projects)
 
-![Build](./IntelliJonSpark/Build.png)
+![Build](./SparkonIntelliJ/Build.png)
 
 After building the project, choose any .scala file which includes `main()` function and then compile it.
 After compiling, run or debug.
 
-![Run](./IntelliJonSpark/Run.png)
+![Run](./SparkonIntelliJ/Run.png)
 
 Created By Masa (Feb. 19 2016)
