@@ -44,11 +44,13 @@ Choose `File` > `Import` and select downloaded project. If the project is alread
 
 
 ## 4. Set up scope of dependencies from **provided** to **compile**
+Basically in IntelliJ, all dependent files needs to be **compiled** from source code. If the scope is **provided**, the files are provided as .jar files. 
+
 Choose `File` > `Project Structure`
 
 ![Project Structure](./SparkonIntelliJ/ProjectStructure.png)
 
-And then, choose `Modules` > *Modules which need to compile* > `Dependencies` > `Scope` (You should change all dependencies from `Provided` to `Compile` ) 
+And then, choose `Modules` > *Modules which need to compile* > `Dependencies` > `Scope` (You should change all dependencies from `Provided` to `Compile` )
 
 
 ![Change Scope](./SparkonIntelliJ/ChangeScope.png)
