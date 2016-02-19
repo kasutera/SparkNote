@@ -48,7 +48,8 @@ Choose `File` > `Project Structure`
 
 ![Project Structure](./SparkonIntelliJ/ProjectStructure.png)
 
-And then, choose `Modules` > *Any Module* > `Dependencies` > `Scope (Provided > Compile)`
+And then, choose `Modules` > *Modules which need to compile* > `Dependencies` > `Scope` (You should change all dependencies from `Provided` to `Compile` ) 
+
 
 ![Change Scope](./SparkonIntelliJ/ChangeScope.png)
 
