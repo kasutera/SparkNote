@@ -1,6 +1,8 @@
 # Spark on IntelliJ
 
 This document provides how to set up IntelliJ developing environment for Spark (compile & debug).
+You can compile NOT ONLY Spark Application BUT ALSO Spark itself.
+It is for developing spark inside.
 
 ## Overview
 1. Install `Java` `Scala` `Git` `Maven` `IntelliJ (with Scala plug-in)`
@@ -44,7 +46,7 @@ Choose `File` > `Import` and select downloaded project. If the project is alread
 
 
 ## 4. Set up scope of dependencies from **provided** to **compile**
-Basically in IntelliJ, all dependent files needs to be **compiled** from source code. If the scope is **provided**, the files are provided as .jar files. 
+Basically in IntelliJ, all dependent files needs to be **compiled** from source code. If the scope is **provided**, the files are provided as .jar files.
 
 Choose `File` > `Project Structure`
 
