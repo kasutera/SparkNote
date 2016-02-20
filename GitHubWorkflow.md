@@ -7,8 +7,8 @@ This document provides typical workflow of GitHub from fork to pull request.
 3. Make new branch for editing
 4. Edit and commit to the local repository
 5. Push to your repository (remote repository)
-6. (Synchronize your remote repository and the original repository)
-7. (Pull request to the original repository)
+6. Synchronize your remote repository and the original repository
+7. Pull request to the original repository
 
 ### 1. Fork from the original repository and make your own repository
 
@@ -41,12 +41,14 @@ $ git checkout dev
 ### 4. Edit and commit to the local repository
 
 ```
+$ git checkout {new branch name}
 $ git add {add file}
 $ git commit -m "{comment}"
 ```
 
 (Example) commit dynamic vertex add/delete
 ```
+$ git checkout dev
 $ git add .
 $ git commit -m "dynamic vertex add/delete"
 ```
