@@ -1,4 +1,5 @@
 #! /bin/sh
+NUM_NODES=`wc -l $PBS_NODEFILE | awk '{print $1}'`
 
 #### Editable Parameters ####
 # Spark application class including main() and its arguments.
@@ -24,7 +25,6 @@ SPARK_LOG_DIR="/work1/t2gsgraph/hanai/eventlog"
 # If you want to set up other Spark parameters, edit source code below.
 #############################
 
-NUM_NODES=`wc -l $PBS_NODEFILE | awk '{print $1}'`
 echo '---------- Properties ----------'
 echo "Job ID:              $PBS_JOBID"
 echo "# of Nodes: $NUM_NODES"
