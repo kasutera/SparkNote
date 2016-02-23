@@ -30,6 +30,7 @@ This document provides tips to set up Spark on TSUBAME.
 The quick way to compile Spark project is to use self-contained maven (`build/mvn`).
 The build takes long time (over 30 minutes at the first time).
 ```
+(on your laptop)
 $ git clone https://github.com/apache/spark.git
 $ cd spark
 $ build/mvn -DskipTests clean package
@@ -53,6 +54,7 @@ Use `scp` `rsync` to upload.
 Set `$SPARK_HOME`.
 For performance, Spark project should be on GPFS(`/data0`) or Lustre(`/work0`) instead of nfs(`home`).
 ```
+(on TSUBAME)
 $ export SPARK_HOME="[Spark directory]"
 ```
 ## 5. Run on Batch Node
