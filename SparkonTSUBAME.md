@@ -106,7 +106,7 @@ $ ./sbin/stop-all.sh
 
 ## 6. Submit Spark job and get running history
 For running on larger-scale machines, the interactive way is not suited.
-Submitting job `with a job script` is a good idea for larger-scale.
+Submitting job **with a job script** is a good idea.
 A template of the job script is [here](./src/job_script.template).
 
 First, you should edit the job_script.template.
