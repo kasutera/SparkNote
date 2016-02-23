@@ -50,13 +50,16 @@ Use `scp` `rsync` to upload.
 
 ## 3. Set up SDK
 
-## 4. Set SPARK_HOME
-Set `$SPARK_HOME`.
+## 4. Set `SPARK_HOME` and `_JAVA_OPTIONS`
+Spark needs over 4G Java heap memory. Thus you need to set up `_JAVA_OPTIONS` in `.bashrc`.
+Also need to set `$SPARK_HOME`.
 For performance, Spark project should be on GPFS(`/data0`) or Lustre(`/work0`) instead of nfs(`home`).
 ```
-(on TSUBAME)
-$ export SPARK_HOME="[Spark directory]"
+(in .bashrc)
+export _JAVA_OPTIONS="-Xmx45G"
+export SPARK_HOME="[Spark directory]"
 ```
+
 ## 5. Run on Batch Node
 First, run Spark interactively using `allocnode` script.
 `allocnode` is in `/work1/t2gsgraph/apps/utils/bin/`.
@@ -64,10 +67,6 @@ First, run Spark interactively using `allocnode` script.
 Log in Batch Node.
 ```
 $ allocnode -g [TSUBAME Group Name] -n [# of Nodes] -w [Time(hour)] -q S
-```
-Spark needs over 4G Java heap memory. Thus you need to set up `_JAVA_OPTIONS`.
-```
-$ export _JAVA_OPTIONS="-Xmx45G"
 ```
 And then launch master (current node) and worker (other allocated nodes).
 ```
@@ -82,7 +81,7 @@ $ ./sbin/start-slaves.sh
 For setting up Spark configuration,  edit `conf/spark-defaults.conf` like that.
 ```
 $ echo -e \
-"spark.executor.memory  45g  \n"\
+"spark.executor.memory  40g  \n"\
 "spark.executor.cores   12   \n"\
 "spark.local.dir        /scr \n"\
 > ./conf/spark-defaults.conf
@@ -163,7 +162,7 @@ The history server can be launched in your laptop.
 $ cd [Spark Home]
 $ mkdir eventlog
 $ scp -C [usrID]@131.112.4.49:[path to eventLog]/* ./eventlog
-$ ./sbin/start-history-server eventlog
+$ ./sbin/start-history-server.sh eventlog
 ```
 And then you can see `http://localhost:18080` in your laptop.
 After checking, you should quit the history server.

@@ -4,16 +4,16 @@ NUM_NODES=`wc -l $PBS_NODEFILE | awk '{print $1}'`
 #### Editable Parameters ####
 # Spark application class including main() and its arguments.
 SPARK_APP_CLASS="org.apache.spark.examples.SparkPageRank"
-SPARK_APP_ARGS="$SPARK_HOME/graphx/data/followers.txt 30
+SPARK_APP_ARGS="$SPARK_HOME/graphx/data/followers.txt 30"
 
 # Spark executable jar file
 SPARK_JAR="$SPARK_HOME/examples/target/spark-examples_2.11-2.0.0-SNAPSHOT.jar"
 
 # Number of threads per node (spark.executor.cores)
-SPARK_NUM_THREAD=12
+SPARK_NUM_THREADS=12
 
 # Memory size per node (spark.executor.memory)
-SPARK_MEM_SIZE=45g
+SPARK_MEM_SIZE=40g
 
 # Local scratch file directory (spark.local.dir)
 # /scr is local SSD. /tmp is NFS
@@ -42,7 +42,7 @@ grep -v `hostname` $PBS_NODEFILE > conf/slaves
 # Set up Spark configuration
 echo -e \
 "spark.executor.memory  $SPARK_MEM_SIZE   \n"\
-"spark.executor.cores   $SPARK_NUM_TREADS \n"\
+"spark.executor.cores   $SPARK_NUM_THREADS \n"\
 "spark.local.dir        $SPARK_LOCAL_FILE_DIR \n"\
 "spark.eventLog.enabled true \n"\
 "spark.eventLog.dir     $SPARK_LOG_DIR \n"\
@@ -51,10 +51,10 @@ echo -e \
 
 # Launch Spark application
 ./bin/spark-submit \
- --depoly-mode cluster \
+ --deploy-mode cluster \
  --class $SPARK_APP_CLASS \
- --master spark://`localhost`:6066 \
- $SPARK_JAR $SPARK_APP_ARG
+ --master spark://`hostname`:6066 \
+ $SPARK_JAR $SPARK_APP_ARGS
 
 # Stop Master and Worker
 ./sbin/stop-all.sh
