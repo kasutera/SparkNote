@@ -13,7 +13,7 @@ SPARK_JAR="$SPARK_HOME/examples/target/spark-examples_2.11-2.0.0-SNAPSHOT.jar"
 SPARK_NUM_THREAD=12
 
 # Memory size per node (spark.executor.memory)
-SPARK_MEM_SIZE=50g
+SPARK_MEM_SIZE=45g
 
 # Local scratch file directory (spark.local.dir)
 # /scr is local SSD. /tmp is NFS

@@ -5,7 +5,7 @@ This document provides tips to set up Spark on TSUBAME.
 1. Compile Spark on your laptop
 2. Upload the compiled Spark to TSUBAME
 3. Set up JDK
-4. Set up Spark
+4. Set SPARK_HOME
 5. Run on Batch Node
 6. Submit Spark job and get running history
 7. Profile
@@ -49,13 +49,7 @@ Use `scp` `rsync` to upload.
 
 ## 3. Set up SDK
 
-## 4. Set up Spark
-Spark needs over 4G Java heap memory. Thus you need to set up `_JAVA_OPTIONS`.
-
-```
-$ export _JAVA_OPTIONS="-Xmx50G -Xms5G"
-```
-
+## 4. Set SPARK_HOME
 Set `$SPARK_HOME`.
 For performance, Spark project should be on GPFS(`/data0`) or Lustre(`/work0`) instead of nfs(`home`).
 ```
@@ -68,6 +62,10 @@ First, run Spark interactively using `allocnode` script.
 Log in Batch Node.
 ```
 $ allocnode -g [TSUBAME Group Name] -n [# of Nodes] -w [Time(hour)] -q S
+```
+Spark needs over 4G Java heap memory. Thus you need to set up `_JAVA_OPTIONS`.
+```
+$ export _JAVA_OPTIONS="-Xmx45G"
 ```
 And then launch master (current node) and worker (other allocated nodes).
 ```
@@ -82,7 +80,7 @@ $ ./sbin/start-slaves.sh
 For setting up Spark configuration,  edit `conf/spark-defaults.conf` like that.
 ```
 $ echo -e \
-"spark.executor.memory  50g  \n"\
+"spark.executor.memory  45g  \n"\
 "spark.executor.cores   12   \n"\
 "spark.local.dir        /scr \n"\
 > ./conf/spark-defaults.conf
@@ -123,7 +121,7 @@ SPARK_JAR="$SPARK_HOME/examples/target/spark-examples_2.11-2.0.0-SNAPSHOT.jar"
 SPARK_NUM_THREAD=12
 
 # Memory size per node (spark.executor.memory)
-SPARK_MEM_SIZE=50g
+SPARK_MEM_SIZE=45g
 
 # Local scratch file directory (spark.local.dir)
 # /scr is local SSD. /tmp is NFS
